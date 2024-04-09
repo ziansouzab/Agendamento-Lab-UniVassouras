@@ -1,7 +1,7 @@
 from django.db import models
 
-class Sala(models.Model):   
-    id = models.AutoField(primary_key=True) 
+class Sala(models.Model):
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255, blank=False, unique=True)
     date_created = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField(auto_now=True)
@@ -10,11 +10,18 @@ class Sala(models.Model):
     def __str__(self):        
         return '{0}'.format(self.name)
     
+    
+class Professor(models.Model):
+    matricula = models.IntegerField(primary_key=True)
+    nome = models.CharField(max_length=50, blank=False, unique=False)
+    password = models.CharField(max_length=50, blank=False, null=False)
+
 
 
 class Agenda(models.Model):    
     titulo = models.CharField(max_length=255, blank=False, unique=False)
     sala = models.ForeignKey(Sala, on_delete=models.CASCADE, blank=True, null=True)
+    professor = models.ForeignKey(Professor, on_delete=models.CASCADE, blank=False, null=True )
     date_init = models.DateTimeField(blank=False, null=True)
     date_end = models.DateTimeField(blank=True, null=True)
     date_created = models.DateTimeField(auto_now_add=True)
@@ -27,13 +34,6 @@ class Agenda(models.Model):
         date_init = self.date_init
         date_end = self.date_end
         sala = self.sala        
-
-        '''
-            checa se existe algum agendamento entre o horario de inicio fim do agendamento
-            q esta tantados salvar, mesmo que duplique so sera aceito se for zero
-            e tem que ser para a mesma sala claro
-
-        '''
 
         agendas = Agenda.objects.all()
         if(self.id != None):
