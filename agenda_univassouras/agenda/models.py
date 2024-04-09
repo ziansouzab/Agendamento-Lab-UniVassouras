@@ -15,6 +15,7 @@ class Professor(models.Model):
     matricula = models.IntegerField(primary_key=True)
     nome = models.CharField(max_length=50, blank=False, unique=False)
     password = models.CharField(max_length=50, blank=False, null=False)
+    email =  models.EmailField(unique=False)
 
 
 
