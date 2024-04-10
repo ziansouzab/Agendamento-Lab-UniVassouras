@@ -3,6 +3,7 @@ from .serializers import AgendaSerializer, SalaSerializer
 from rest_framework.views import APIView
 from .models import Agenda, Sala
 from rest_framework.response import Response
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 
 
 
