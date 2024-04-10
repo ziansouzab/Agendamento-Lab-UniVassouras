@@ -57,6 +57,6 @@ class Agenda(models.Model):
 
     def save(self, *args, **kwargs):                
         if(self.duplicado() > 0):                 
-            raise ValueError('Sala já em uso nesse dia e horário.')
+            raise ValueError('Sala já agendada nesse dia e horário!')
         else:
             super(Agenda, self).save(*args, **kwargs)
