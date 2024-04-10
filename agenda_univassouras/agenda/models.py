@@ -17,6 +17,9 @@ class Professor(models.Model):
     password = models.CharField(max_length=20, blank=False, null=False)
     email =  models.EmailField(unique=False)
 
+    def __str__(self):
+        return '{0}'.format(self.nome)
+
 
 
 class Agenda(models.Model):    
