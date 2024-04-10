@@ -1,9 +1,9 @@
-from rest_framework import generics
-from .serializers import AgendaSerializer
+from rest_framework import generics, status
+from .serializers import AgendaSerializer, SalaSerializer
 from rest_framework.views import APIView
-from .models import Agenda
+from .models import Agenda, Sala
 from rest_framework.response import Response
-from rest_framework import status
+
 
 
 
@@ -37,3 +37,16 @@ class DetailsView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Agenda.objects.all()
     serializer_class = AgendaSerializer
 
+
+class CreateView(ListCreateAPIView):   
+    queryset = Sala.objects.all()
+    serializer_class = SalaSerializer
+
+    def perform_create(self, serializer):
+        """Salva os dados do post e cria uma nova Sala."""
+        serializer.save()
+
+class DetailsView(RetrieveUpdateDestroyAPIView):
+    """This class handles the http GET, PUT and DELETE requests."""
+    queryset = Sala.objects.all()
+    serializer_class = SalaSerializer

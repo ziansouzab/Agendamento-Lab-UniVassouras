@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Agenda
+from .models import Sala
 
 class AgendaSerializer(serializers.ModelSerializer):
     class Meta:        
@@ -23,3 +24,10 @@ class AgendaSerializer(serializers.ModelSerializer):
         except Exception as e:
             error = {'message': ",".join(e.args) if len(e.args) > 0 else 'Unknown Error'}
             raise serializers.ValidationError(error, code=400)
+        
+
+class SalaSerializer(serializers.ModelSerializer):
+    class Meta:        
+        model = Sala
+        fields = ('id', 'name', 'date_created', 'date_modified')
+        read_only_fields = ('id', 'date_created', 'date_modified')
