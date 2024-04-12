@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Sala, Agenda, Professor
+from .models import Sala, Agenda, Professor, Turma
 
 @admin.register(Sala)
 class SalaAdmin(admin.ModelAdmin):
@@ -13,4 +13,8 @@ class AgendaAdmin(admin.ModelAdmin):
 class ProfessorAdmin(admin.ModelAdmin):
     ...
 
+@admin.register(Turma)
+class TurmaAdmin(admin.ModelAdmin):
+    ...
 
+    
