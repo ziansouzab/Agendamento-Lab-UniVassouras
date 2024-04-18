@@ -1,4 +1,5 @@
 from django.db import models
+from professor.models import Professor
 
 class Sala(models.Model):
     id = models.AutoField(primary_key=True)
@@ -10,15 +11,7 @@ class Sala(models.Model):
     def __str__(self):        
         return '{0}'.format(self.name)
     
-    
-class Professor(models.Model):
-    matricula = models.IntegerField(primary_key=True)
-    nome = models.CharField(max_length=50, unique=False)
-    password = models.CharField(max_length=20, null=False)
-    email =  models.EmailField(unique=False)
 
-    def __str__(self):
-        return '{0}'.format(self.nome)
 
 class Turma(models.Model):
     nome = models.CharField(max_length=50)
