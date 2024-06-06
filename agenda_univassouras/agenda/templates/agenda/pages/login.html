@@ -1,0 +1,58 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+</head>
+
+<body>
+    <div class="page">
+        <form action="." method="post" class="formLogin">
+            {% csrf_token %}
+
+            <div class="title">
+                <h1>Agendamento UniVassouras</h1>
+                <p>Digite os seus dados de acesso no campo abaixo.</p>
+            </div>
+            <div class="form-content">
+                <div class="form-group">
+                    {% for field in form %}
+                    <div class="label">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{field}}
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="forget">
+                    <a href="/">Esqueci minha senha</a>
+                </div>
+
+
+                {% if messages %}
+                <div class="alert-container">
+                    {% for message in messages %}
+                    <div class="message">
+                        {{message}}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <div class="button">
+                    <button type="submit" class="btn"> Acessar </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>

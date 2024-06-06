@@ -1,5 +1,33 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.http import Http404
+from django.shortcuts import redirect, render
+from django.urls import reverse
 
-def home(request):
-    return "Hello World"
+from .forms import LoginForm
+
+def user_login(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            user = authenticate(username=cd['username'],
+                   password=cd['password'])
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    messages.success(request, "Login feito com sucesso!")
+                    return redirect('agenda:agenda_view')
+                else:
+                    messages.error(request, 'Conta desabilitada')
+            else:
+                messages.error(request, 'Credenciais inválidas')
+    else:
+        form = LoginForm()
+    return render(request, 'agenda/pages/login.html', {'form': form})
+
+
+@login_required(login_url='agenda:user_login', redirect_field_name='next')
+def agenda_view(request):
+    return render(request, 'agenda/pages/agenda.html')
