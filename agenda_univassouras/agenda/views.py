@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from django.shortcuts import redirect, render
 from django.urls import reverse
+from .models import Sala, Agenda
 
 from .forms import LoginForm
 
@@ -36,4 +37,8 @@ def logout_view(request):
 
 @login_required(login_url='agenda:user_login', redirect_field_name='next')
 def agenda_view(request):
-    return render(request, 'agenda/pages/agenda.html')
+    salas = Sala.objects.all()
+    agendas = Agenda.objects.all()    
+    return render(request, 'agenda/pages/agenda.html', 
+                  {'salas': salas,
+                   'agendas': agendas,})

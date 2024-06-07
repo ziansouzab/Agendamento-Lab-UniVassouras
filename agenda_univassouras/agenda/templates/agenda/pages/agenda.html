@@ -1,1 +1,23 @@
 {% extends 'agenda/pages/base.html' %}
+
+{% block title %} Sala{% endblock %}
+
+{% block content %}
+
+<div class="container-salas">
+    <h2> Salas Cadastradas: </h2>
+    {% for sala in salas %}
+    {% include '../partials/salas-list.html' %}
+    {% endfor %}
+</div>
+
+<hr>
+
+<div class="container-agendas">
+    <h2> Agendas: </h2>
+    {% for agenda in agendas %}
+    {% include '../partials/agendas-list.html' %}
+    {% endfor %}
+</div>
+
+{% endblock content %}

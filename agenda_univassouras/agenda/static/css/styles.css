@@ -15,7 +15,7 @@
 
     --color-white: #fff;
 
-    --color-gray: #f9f9f9;
+    --color-gray: #c4c1c1;
 
     --font-primary: sans-serif;
 
@@ -27,7 +27,8 @@ body {
     font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
-    color: #023047
+    color: #023047;
+    background-color: var(--color-gray);
 }
 
 .page {
@@ -203,3 +204,47 @@ h3 {
     text-decoration: none;
     color: var(--color-white);
 }
+
+.content-site {
+    padding: 20px;
+}
+
+.salas-list {
+    margin-top: 30px;
+    background-color: var(--color-white);
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    width: 100%;
+    box-shadow: 2px 2px 2px 2px rgba(43, 42, 42, 0.1);
+
+}
+
+.data-content {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+
+
+.agenda-content {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+
+.container-agendas {
+    margin-top: 20px;
+}
+
+hr {
+    margin-top: 30px;
+    border: 1;
+	border-top: 20px solid var(--color-primary);
+}
+
+
