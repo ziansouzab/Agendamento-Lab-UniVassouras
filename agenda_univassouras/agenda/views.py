@@ -17,7 +17,6 @@ def user_login(request):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    messages.success(request, "Login feito com sucesso!")
                     return redirect('agenda:agenda_view')
                 else:
                     messages.error(request, 'Conta desabilitada')
@@ -26,6 +25,13 @@ def user_login(request):
     else:
         form = LoginForm()
     return render(request, 'agenda/pages/login.html', {'form': form})
+
+
+@login_required(login_url='agenda:user_login', redirect_field_name='next')
+def logout_view(request):
+    logout(request)
+    messages.success(request, "Logout feito com sucesso!")
+    return redirect('agenda:user_login')
 
 
 @login_required(login_url='agenda:user_login', redirect_field_name='next')

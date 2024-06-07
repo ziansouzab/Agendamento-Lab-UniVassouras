@@ -164,7 +164,6 @@ h3 {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 500px;
 
 }
 
@@ -173,7 +172,7 @@ h3 {
     color: var(--color-white);
     text-decoration: none;
     display: flex;
-    flex-flow: row nowrap;
+    flex-grow: 0.2;
     align-items: center;
     justify-content: center;
     width: fit-content;
@@ -192,8 +191,15 @@ h3 {
 
 .logout {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-grow: 1;
     color: var(--color-white);
-    width: 100px;
+    width: fit-content;
+    align-items: right;
+    justify-content: right;
+    padding: 30px;
+}
+
+.logout a {
+    text-decoration: none;
+    color: var(--color-white);
 }

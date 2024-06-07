@@ -7,6 +7,7 @@ app_name = 'agenda'
 
 urlpatterns = [
     path('', views.user_login, name='user_login'),
-    path('agenda/', views.agenda_view, name='agenda_view')
+    path('agenda/', views.agenda_view, name='agenda_view'),
+    path('logout/', views.logout_view, name='logout_view')
 ]
 

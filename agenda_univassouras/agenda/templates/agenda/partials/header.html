@@ -1,14 +1,13 @@
 {% load static %}
 
 <header class="main-header-container">
-    <h1>
-        <a class="main-logo">
-            <img src="{% static '/img/logo-univassouras.jpg' %}" class="logo">
-        </a>
-    </h1>
+    
+    <a class="main-logo">
+        <img src="{% static '/img/logo-univassouras.jpg' %}" class="logo">
+    </a>
 
     <div class="logout">
-        <span><a>Logout</a></span>
+        <a href="{% url 'agenda:logout_view' %}">Logout</a>
     </div>
 
 </header>
